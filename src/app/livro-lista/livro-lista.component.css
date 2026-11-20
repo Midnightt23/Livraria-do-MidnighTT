@@ -1,0 +1,174 @@
+/* titulo centralizado da pagina */
+.titulo-pagina {
+  text-align: center;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* linha decorativa abaixo do titulo */
+.titulo-pagina::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4e73df, #224abe);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* cabecalho da tabela com cor de destaque */
+.cabecalho-tabela th {
+  background: linear-gradient(90deg, #4e73df, #224abe);
+  color: #fff;
+  border: none;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* cartao que envolve a tabela */
+.card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* badge da editora */
+.badge-editora {
+  background-color: #eaf0ff;
+  color: #224abe;
+  font-weight: 600;
+  padding: 0.5em 0.9em;
+  font-size: 0.8rem;
+}
+
+/* lista de autores sem marcadores */
+.lista-autores {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-autores li {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* botao de editar (outline que preenche no hover) */
+.btn-editar {
+  background-color: transparent;
+  border: 1.5px solid #4e73df;
+  color: #4e73df;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.35rem 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-editar:hover {
+  background-color: #4e73df;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(78, 115, 223, 0.35);
+}
+
+/* botao de excluir (outline que preenche no hover) */
+.btn-excluir {
+  background-color: transparent;
+  border: 1.5px solid #e74a3b;
+  color: #e74a3b;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.35rem 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-excluir:hover {
+  background-color: #e74a3b;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(231, 74, 59, 0.35);
+}
+
+/* titulo clicavel que abre a modal */
+.link-titulo {
+  color: #224abe;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link-titulo:hover {
+  text-decoration: underline;
+}
+
+/* fundo escurecido da modal */
+.modal-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  animation: aparecer 0.2s ease;
+}
+
+/* caixa branca da modal */
+.modal-caixa {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: subir 0.25s ease;
+}
+
+.modal-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(90deg, #4e73df, #224abe);
+  color: #fff;
+}
+
+.btn-fechar {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* cabecalho vermelho da modal de exclusao */
+.cabecalho-perigo {
+  background: linear-gradient(90deg, #e74a3b, #c6372a);
+}
+
+.modal-corpo {
+  padding: 1.25rem;
+}
+
+.modal-rodape {
+  padding: 0.75rem 1.25rem;
+  text-align: right;
+  border-top: 1px solid #eee;
+}
+
+/* animacoes de entrada */
+@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes subir {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

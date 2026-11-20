@@ -1,0 +1,47 @@
+<!-- tela de cadastro/edicao de livro -->
+<main class="container my-4">
+  <!-- titulo muda conforme o modo (novo ou edicao) -->
+  <h1 class="titulo-pagina">{{ edicao ? "Editar Livro" : "Novo Livro" }}</h1>
+
+  <div class="card shadow-sm form-card mx-auto">
+    <div class="card-body p-4">
+      <!-- ngNativeValidate usa a validacao do proprio HTML -->
+      <form (submit)="incluir()" ngNativeValidate>
+        <!-- campo do titulo -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Titulo</label>
+          <input type="text" class="form-control" [(ngModel)]="livro.titulo" name="titulo" required>
+        </div>
+
+        <!-- campo do resumo -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Resumo</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="livro.resumo" name="resumo"></textarea>
+        </div>
+
+        <!-- combo com as editoras -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Editora</label>
+          <select class="form-select" [(ngModel)]="livro.codEditora" name="codEditora" required>
+            <option [ngValue]="undefined" disabled>Selecione uma editora</option>
+            <option *ngFor="let editora of editoras" [ngValue]="editora.codEditora">{{ editora.nome }}</option>
+          </select>
+        </div>
+
+        <!-- campo dos autores, um por linha -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Autores <small class="text-muted">(um por linha)</small></label>
+          <textarea class="form-control" rows="3" [(ngModel)]="autoresForm" name="autoresForm"></textarea>
+        </div>
+
+        <!-- botoes de acao -->
+        <div class="d-flex justify-content-end gap-2 mt-4">
+          <a class="btn btn-outline-secondary" routerLink="/lista">Cancelar</a>
+          <button type="submit" class="btn btn-salvar">
+            <i class="bi bi-check-lg"></i> {{ edicao ? "Salvar Alteracoes" : "Cadastrar" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

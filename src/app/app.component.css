@@ -1,0 +1,22 @@
+/* botoes de navegacao no menu do topo */
+.btn-nav {
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.35rem 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-color: #fff;
+}
+
+/* rota ativa fica destacada em branco */
+.btn-nav.ativo {
+  background-color: #fff;
+  color: #224abe;
+  border-color: #fff;
+}

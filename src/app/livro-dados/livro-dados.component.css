@@ -1,0 +1,49 @@
+/* titulo centralizado da pagina */
+.titulo-pagina {
+  text-align: center;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* linha decorativa abaixo do titulo */
+.titulo-pagina::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4e73df, #224abe);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* cartao do formulario centralizado e com largura limitada */
+.form-card {
+  max-width: 640px;
+  border: none;
+  border-radius: 12px;
+}
+
+/* foco dos campos na cor do tema */
+.form-control:focus,
+.form-select:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.2);
+}
+
+/* botao de salvar */
+.btn-salvar {
+  background: linear-gradient(90deg, #4e73df, #224abe);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-salvar:hover {
+  filter: brightness(1.08);
+  color: #fff;
+  transform: translateY(-1px);
+}

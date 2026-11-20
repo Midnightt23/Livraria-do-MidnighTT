@@ -1,0 +1,98 @@
+<!-- tela que mostra a lista de livros -->
+<main class="container my-4">
+  <h1 class="titulo-pagina">Livraria do MidnighTT</h1>
+
+  <div class="card shadow-sm">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="cabecalho-tabela">
+        <tr>
+          <th class="text-center">Titulo</th>
+          <th class="text-center">Editora</th>
+          <th class="text-center">Autores</th>
+          <th class="text-center">Acoes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- repete uma linha para cada livro -->
+        <tr *ngFor="let livro of livros">
+          <td class="fw-semibold">
+            <!-- clicar no titulo abre a modal com o resumo -->
+            <a class="link-titulo" (click)="abrirResumo(livro)">{{ livro.titulo }}</a>
+          </td>
+          <!-- mostra o nome da editora pelo codigo -->
+          <td class="text-center">
+            <span class="badge rounded-pill badge-editora">{{ obterNome(livro.codEditora) }}</span>
+          </td>
+          <td>
+            <!-- lista com os autores do livro -->
+            <ul class="lista-autores mb-0">
+              <li *ngFor="let autor of livro.autores">{{ autor }}</li>
+            </ul>
+          </td>
+          <td class="text-center text-nowrap">
+            <!-- botao de editar, leva para a tela de dados com o codigo -->
+            <a class="btn btn-sm btn-editar me-2" [routerLink]="['/dados', livro.codigo]">
+              <i class="bi bi-pencil-square"></i> Editar
+            </a>
+            <!-- botao que exclui o livro -->
+            <button class="btn btn-sm btn-excluir" (click)="pedirExclusao(livro)">
+              <i class="bi bi-trash"></i> Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- modal com o resumo do livro, aparece so quando ha um livro selecionado -->
+<div class="modal-fundo" *ngIf="livroSelecionado" (click)="fecharResumo()">
+  <!-- stopPropagation evita fechar ao clicar dentro da caixa -->
+  <div class="modal-caixa" (click)="$event.stopPropagation()">
+    <div class="modal-cabecalho">
+      <h5 class="mb-0">{{ livroSelecionado.titulo }}</h5>
+      <button class="btn-fechar" (click)="fecharResumo()" aria-label="Fechar">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="modal-corpo">
+      <p class="mb-3">
+        <span class="badge rounded-pill badge-editora">{{ obterNome(livroSelecionado.codEditora) }}</span>
+      </p>
+      <h6 class="text-muted">Resumo</h6>
+      <p>{{ livroSelecionado.resumo }}</p>
+      <h6 class="text-muted mt-3">Autores</h6>
+      <ul class="lista-autores">
+        <li *ngFor="let autor of livroSelecionado.autores">{{ autor }}</li>
+      </ul>
+    </div>
+    <div class="modal-rodape">
+      <button class="btn btn-outline-secondary" (click)="fecharResumo()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- modal de confirmacao de exclusao -->
+<div class="modal-fundo" *ngIf="livroExcluir" (click)="cancelarExclusao()">
+  <div class="modal-caixa modal-confirmacao" (click)="$event.stopPropagation()">
+    <div class="modal-cabecalho cabecalho-perigo">
+      <h5 class="mb-0"><i class="bi bi-exclamation-triangle me-2"></i>Confirmar exclusao</h5>
+      <button class="btn-fechar" (click)="cancelarExclusao()" aria-label="Fechar">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="modal-corpo">
+      <p class="mb-0">
+        Tem certeza que deseja excluir o livro
+        <strong>"{{ livroExcluir.titulo }}"</strong>?
+      </p>
+      <p class="text-muted small mb-0 mt-2">Esta acao nao pode ser desfeita.</p>
+    </div>
+    <div class="modal-rodape">
+      <button class="btn btn-outline-secondary me-2" (click)="cancelarExclusao()">Cancelar</button>
+      <button class="btn btn-excluir" (click)="confirmarExclusao()">
+        <i class="bi bi-trash"></i> Excluir
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<!-- menu de navegacao do sistema -->
+<nav class="navbar navbar-expand navbar-dark" style="background: linear-gradient(90deg, #224abe, #4e73df);">
+  <div class="container">
+    <span class="navbar-brand fw-bold"><i class="bi bi-book-half me-2"></i>Livraria do MidnighTT</span>
+    <!-- botoes de navegacao alinhados a direita -->
+    <div class="d-flex gap-2">
+      <a class="btn btn-nav" routerLink="/lista" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-list-ul me-1"></i>Lista
+      </a>
+      <a class="btn btn-nav" routerLink="/dados" routerLinkActive="ativo">
+        <i class="bi bi-plus-lg me-1"></i>Novo Livro
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- aqui aparece a tela da rota atual -->
+<router-outlet></router-outlet>
